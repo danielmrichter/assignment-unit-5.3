@@ -39,18 +39,34 @@ function findByArtist(collection,artist){
 console.log(findByArtist(myCollection, `Invent Animate`));
 console.log(findByArtist(myCollection, `Steely Dan`));
 
-function search(collection, searchCritera){
+// function search(collection, searchCritera){
+//   let holdingArray = []
+//   if(searchCritera ==undefined || searchCritera ===`` || Object.keys(searchCritera)==0){
+//     return collection}
+//   for (let i = 0; i < collection.length; i++) {
+//     if(searchCritera == collection[i].artist || searchCritera==collection[i].yearPublished){
+//       holdingArray.push(collection[i])
+//     }
+//   }
+//   return holdingArray
+// }
+
+function search(collection,artistCriteria,yearCriteria){
   let holdingArray = []
-  if(searchCritera == null)
-    return collection
-  for (let i = 0; i < collection.length; i++) {
-    if(searchCritera == collection[i].artist || searchCritera==collection[i].yearPublished){
-      holdingArray.push(collection[i])
+  if(artistCriteria ===undefined || artistCriteria ===`` || Object.keys(artistCriteria)===0){
+   return collection}
+  if(yearCriteria ===undefined || yearCriteria ===`` || Object.keys(yearCriteria)===0){
+    return collection}
+for(let piece of collection){
+  if(piece.artist == artistCriteria && piece.yearPublished == yearCriteria){
+    holdingArray.push(piece)
     }
-    return holdingArray
   }
+  return holdingArray
 }
-console.log(`test for search function: `, search(myCollection, `Starset`));
+console.log(`test for search function, should have tesseract: `, search(myCollection,{artist:`Tesseract`, yearPublished:2023}));
+console.log(`test for empty array search function,`, search(myCollection,));
+console.log(`test for empty object`, search(myCollection, {}));
 
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
 // as a lil' chunk of friendly code that you don't need to understand right now.
