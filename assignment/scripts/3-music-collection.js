@@ -51,14 +51,17 @@ console.log(findByArtist(myCollection, `Steely Dan`));
 //   return holdingArray
 // }
 
-function search(collection,artistCriteria,yearCriteria){
+function search(collection, searchCritera){
   let holdingArray = []
-  if(artistCriteria ===undefined || artistCriteria ===`` || Object.keys(artistCriteria)===0){
+  if(searchCritera === undefined){
+    return collection
+  }
+  if(searchCritera.artist === undefined || searchCritera.artist === `` || Object.keys(searchCritera) === 0){
    return collection}
-  if(yearCriteria ===undefined || yearCriteria ===`` || Object.keys(yearCriteria)===0){
+  if(searchCritera.yearPublished === undefined || searchCritera.yearPublished === `` || Object.keys(searchCritera) === 0){
     return collection}
 for(let piece of collection){
-  if(piece.artist == artistCriteria && piece.yearPublished == yearCriteria){
+  if(piece.artist === searchCritera.artist && piece.yearPublished === searchCritera.yearPublished){
     holdingArray.push(piece)
     }
   }
