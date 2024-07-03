@@ -1,13 +1,56 @@
 console.log('***** Music Collection *****')
 // Safe Zone -- Write code below this line
+let myCollection = []
+function addToCollection(collection, title, artist, yearPublished) {
+  collection.push ({
+    title: title,
+    artist: artist,
+    yearPublished: yearPublished,
+  })
+  return collection[collection.length-1]
+}
+console.log(`test for addToCollection1:`, addToCollection(myCollection, `War of Being`, `Tesseract`, 2023));
+console.log(`test for addToCollection2:`, addToCollection(myCollection, `Greyview`, `Invent Animate`, 2021));
+console.log(`test for addToCollection3:`, addToCollection(myCollection, `Eternal Blue`, `Spiritbox`, 2021));
+console.log(`test for addToCollection4:`, addToCollection(myCollection, `Language`, `The Contortionist`, 2014));
+console.log(`test for addToCollection5:`, addToCollection(myCollection, `Heavener`, `Invent Animate`, 2023));
+console.log(`test for addToCollection6:`, addToCollection(myCollection, `Divisions`, `Starset`, 2019));
+console.log(`my current collection:`, myCollection);
 
 
+function showCollection(collection){
+  for(let album of collection){
+    console.log(`${album.title} by ${album.artist}, published in ${album.yearPublished}`);
+  }
+  return `Some Bangers :)`
+}
+showCollection(myCollection)
 
+function findByArtist(collection,artist){
+  let holdingArray =[]
+  console.log(`checking for ${artist} in your collection!`);
+  for (let i = 0; i < collection.length; i++) {
+    if(artist == collection[i].artist){
+      holdingArray.push(collection[i])
+    }
+  }
+  return holdingArray
+}
+console.log(findByArtist(myCollection, `Invent Animate`));
+console.log(findByArtist(myCollection, `Steely Dan`));
 
-
-
-
-
+function search(collection, searchCritera){
+  let holdingArray = []
+  if(searchCritera == null)
+    return collection
+  for (let i = 0; i < collection.length; i++) {
+    if(searchCritera == collection[i].artist || searchCritera==collection[i].yearPublished){
+      holdingArray.push(collection[i])
+    }
+    return holdingArray
+  }
+}
+console.log(`test for search function: `, search(myCollection, `Starset`));
 
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
 // as a lil' chunk of friendly code that you don't need to understand right now.
