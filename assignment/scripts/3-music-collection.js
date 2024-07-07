@@ -144,19 +144,19 @@ console.log(findByArtist(myCollection, `Steely Dan`));
 //   return holdingArray
 // }
 
-function testFunc(collection, searchCriteria){
-  let holdingArray=[]
-  if(Object.hasOwn(searchCriteria,`trackName`)===true){
-    for(let element of collection){
-      for(let i=0;i<element.tracks.length;i++){
-        if(element.tracks[i].name === searchCriteria.trackName){
-          holdingArray.push(element)
-        }
-      }
-      }
-     return holdingArray 
-  }
-}
+// function testFunc(collection, searchCriteria){
+//   let holdingArray=[]
+//   if(Object.hasOwn(searchCriteria,`trackName`)===true){
+//     for(let element of collection){
+//       for(let i=0;i<element.tracks.length;i++){
+//         if(element.tracks[i].name === searchCriteria.trackName){
+//           holdingArray.push(element)
+//         }
+//       }
+//       }
+//      return holdingArray 
+//   }
+// }
 
 
 function search(collection, searchCriteria){
@@ -170,9 +170,11 @@ function search(collection, searchCriteria){
           holdingArray.push(element)
         }
       }
-      }
+    }
   }
   if(holdingArray.length>0)
+    return holdingArray
+  if(Object.hasOwn(searchCriteria,`trackName`)===true&& Object.keys(searchCriteria).length === 1 )
     return holdingArray
   if(searchCriteria.artist === undefined || searchCriteria.artist === `` || Object.keys(searchCriteria) === 0){
    return collection}
@@ -191,6 +193,8 @@ console.log(`test for empty object`, search(myCollection, {}));
 console.log(`test for empty object parameter`, search(myCollection, {artist: `Starset` }));
 console.log(`test for just an trackName`, search(myCollection,{trackName:`Trials`}));
 console.log(`test for just an trackName`, search(myCollection,{trackName:`Trials`,artist:`Beyonce`}));
+console.log(`test for a trackname not in mycollection: `, search(myCollection,{trackName:`SUN//EATER`}));
+
 // PLEASE DO NOT MODIFY THIS. Just leave it down here at the bottom. Think of it
 // as a lil' chunk of friendly code that you don't need to understand right now.
 // (It's used for automated testing.)
